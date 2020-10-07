@@ -1,13 +1,16 @@
 
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Render = Matter.Render;
 
 var ground;
 var paper;
-var zone1,zone2,zone3,img,bin1242;
+var zone1,zone2,zone3;
 function preload(){
+	
 }
 
 function setup() {
@@ -19,6 +22,16 @@ function setup() {
 
 	//Create the Bodies Here.
 
+	var render = Render.create({
+		element: document.body,
+		engine: engine,
+		options: {
+		  width: 1200,
+		  height: 700,
+		  wireframes: false
+		}
+	  });  
+
 	Engine.run(engine);
 
 	paper= new Paper(190,200,20);
@@ -28,8 +41,6 @@ function setup() {
 	zone1=new dustBin1 (600,590,60,10);
 	zone2=new dustBin1 (561,580,10,30);
 	zone3=new dustBin1 (639,580,10,30);
-
-	bin1242=new binimg(300,500,10,10);
 }
 
 function draw() {
@@ -41,7 +52,6 @@ function draw() {
  zone1.display();
  zone2.display();
  zone3.display();
- bin1242.display();
 }
 
 function keyPressed(){
